@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="../stylesheets/style.css">
+    <script src="../javascripts/libs/jquery.2.1.4.min.js"></script>
+    <script src="../javascripts/libs/bootstrap.min.js"></script>
+    <script src="../javascripts/libs/vue.min.js"></script>
+    <script src="../javascripts/libs/md5.js"></script>
+    <script src="../javascripts/libs/jquery.cookie.js"></script>
+    <script src="../javascripts/libs/echarts.simple.min.js"></script>
+</head>
+<body id="app">
+<nav class="navbar navbar-default navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-collapse">
+            <a href="/doc/views/test-main.html">
+                <img class="nav-img" src="../images/logo_icon.png"/>
+            </a>
+        </div>
+    </div>
+</nav>
+<div class="container pb50">
+    <div class="clearfix">
+        <div>
+            <a class="btn btn-primary" href="test-case.html">返回上一页</a>
+            <button class="btn btn-default" v-on:click="addVersion">新增</button>
+        </div>
+        <div v-show="showTable">
+            <table class="table table-responsive table-bordered mt10">
+                <thead>
+                <tr><td width="10%">版本号</td><td width="30%">版本描述</td><td width="10%">创建人</td><td width="15%">创建时间</td><td width="15%">关闭时间</td><td width="15%">操作</td></tr>
+                </thead>
+                <tbody>
+                <tr v-for="d in tableData">
+                    <td v-text="d.version"></td>
+                    <td v-text="d.desc"></td>
+                    <td v-text="d.author"></td>
+                    <td v-text="d.createTime"></td>
+                    <td v-text="d.stopTime"></td>
+                    <td>
+                        <button class="btn btn-default" v-show="d.status == 1" v-on:click="editVersion" v-bind:data-id="d._id">编辑</button>
+                        <button class="btn btn-default" v-show="d.status == 1" v-on:click="stopVersion" v-bind:data-id="d._id">关闭</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="mt10">
+                <div class="btn-group">
+                    <button class="btn btn-default" v-on:click="setPage" v-bind:data-page="1">&lt;&lt;</button>
+                    <button class="btn btn-default" v-on:click="setPage" v-bind:data-page="d" v-for="d in btnNums" v-text="d" v-bind:class="{'btn-primary': currentPage == $index}"></button>
+                    <button class="btn btn-default" v-on:click="setPage" v-bind:data-page="totalPage">&gt;&gt;</button>
+                </div>
+            </div>
+        </div>
+        <p v-show="!showTable" v-text="tableTips"></p>
+    </div>
+</div>
+
+
+<div class="modal fade" id="add">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+                <h4 class="modal-title">版本信息</h4>
+            </div>
+            <div class="modal-body">
+                <div class="clearfix">
+                    <div class="input-group">
+                        <span class="input-group-addon">版本号</span>
+                        <input type="text" v-model="addData.version" class="form-control" placeholder="请输入版本号">
+                    </div>
+                    <div class="input-group mt10">
+                        <span class="input-group-addon">创建人</span>
+                        <input type="text" v-model="addData.author" class="form-control" placeholder="请输入创建人">
+                    </div>
+                    <div class="mt10">
+                        <textarea v-model="addData.desc" style="width: 100%;" placeholder="版本描述" class="form-control"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" v-on:click="submit">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../javascripts/common.js"></script>
+<script src="../javascripts/test-version.js"></script>
+</body>
+</html>

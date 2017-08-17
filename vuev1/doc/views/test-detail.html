@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自动化测试系统</title>
+    <link rel="stylesheet" href="../stylesheets/bootstrap.min.css">
+    <script src="../javascripts/libs/jquery.2.1.4.min.js"></script>
+    <script src="../javascripts/libs/bootstrap.min.js"></script>
+    <script src="../javascripts/libs/vue.min.js"></script>
+    <script src="../javascripts/libs/echarts.simple.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-collapse">
+            <img class="nav-img" src="../images/logo_icon.png"/>
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="javascript:" class="dropdown-toggle" data-toggle="dropdown"><span>选择系统报告</span> <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="javascript:" data-toggle="tab" data-target="#oms">oms</a></li>
+                        <li><a href="javascript:" data-toggle="tab" data-target="#bss">bss</a></li>
+                        <li><a href="javascript:" data-toggle="tab" data-target="#css">css</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="javascript:">接口黑盒自动化测试报告</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container pb50">
+    <div class="mt10 mb10">
+        <a href="newTest.html" class="btn btn-default">开始新版本测试</a>
+    </div>
+    <div class="tab-content">
+        <div class="tab-pane fade active in" id="oms">
+            <div class="history">
+                <div class="title">历史迭代版本</div>
+                <ul>
+                    <li><a href="template1.html">v1.0.1</a><span class="fr">2016-11-20 15:20:25</span></li>
+                    <li><a href="template1.html">v1.0.0</a><span class="fr">2016-11-20 13:20:25</span></li>
+                </ul>
+            </div>
+            <div class="system">
+                <p class="title"><b>oms/sysparamconf</b><span class="num">0个接口</span></p>
+                <ul>
+                    <li>
+                        <a href="template.html">oms/sysparamconf/querySystemParamConf</a>
+                        <span>负责人：<b>abc</b></span>
+                    </li>
+                    <li><a href="template.html">oms/sysparamconf/addSystemParamConf</a><span>负责人：<b>abc</b></span></li>
+                    <li><a href="template.html">oms/sysparamconf/editSystemParamConf</a><span>负责人：<b>abc</b></span></li>
+                    <li><a href="template.html">oms/sysparamconf/delSystemParamConf</a><span>负责人：<b>abc</b></span></li>
+                </ul>
+            </div>
+            <div class="system">
+                <p class="title"><b>oms/sysparamconf</b><span class="num">0个接口</span></p>
+                <ul>
+                    <li><a href="template.html">oms/sysparamconf/querySystemParamConf</a><span>负责人：<b>abc</b></span></li>
+                    <li><a href="template.html">oms/sysparamconf/addSystemParamConf</a><span>负责人：<b>abc</b></span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="bss">
+            <div class="history">
+                <div class="title">历史迭代版本</div>
+                <ul>
+                    <li><a href="javascript:">v1.0.1</a><span class="fr">2016-11-20 15:20:25</span></li>
+                    <li><a href="javascript:">v1.0.0</a><span class="fr">2016-11-20 13:20:25</span></li>
+                </ul>
+            </div>
+            <div class="system">
+                <p class="title"><b>oms/sysparamconf</b><span class="num">0个接口</span></p>
+                <ul>
+                    <li>
+                        <a href="template.html">oms/sysparamconf/querySystemParamConf</a>
+                        <span>负责人：<b>abc</b></span>
+                    </li>
+                    <li><a href="template.html">oms/sysparamconf/addSystemParamConf</a><span>负责人：<b>abc</b></span></li>
+                    <li><a href="template.html">oms/sysparamconf/editSystemParamConf</a><span>负责人：<b>abc</b></span></li>
+                    <li><a href="template.html">oms/sysparamconf/delSystemParamConf</a><span>负责人：<b>abc</b></span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="css">
+            <div class="history">
+                <div class="title">历史迭代版本</div>
+                <ul>
+                    <li><a href="javascript:">v1.0.1</a><span class="fr">2016-11-20 15:20:25</span></li>
+                    <li><a href="javascript:">v1.0.0</a><span class="fr">2016-11-20 13:20:25</span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,461 @@
+/**
+ * Created by chenwenxiao on 2016/9/26.
+ */
+
+@import "config.less";
+
+
+/*oms重写框架样式*/
+.oms .form-control{
+    display: inline-block;
+    width: 150px;
+}
+.oms textarea.form-control{
+    width: 100%;
+    height: 150px;
+}
+.oms .jumpPageInput{
+    width: 60px;
+}
+.oms .table > thead > tr > th{
+    border-bottom: 0;
+}
+.oms .table tbody td a{
+    text-decoration: none;
+    color:@color-theme-main;
+    transition: all @time-normal;
+}
+.oms .table tbody td a:hover{
+    color:@color-theme-branch;
+}
+.oms .table{
+    font-size: 12px;
+}
+/*oms相关*/
+/*全局*/
+body{
+    min-width: 800px;
+    height:580px;
+}
+.app{
+    height:100%;
+}
+.loginBody{
+    width:100%;
+    //height:700px;
+    height:100%;
+}
+ol,ul{
+    margin: 0;
+    padding: 0;
+}
+ul li,ol li{
+    list-style: none;
+}
+.hide{
+    display: none;
+}
+/*登录*/
+.login{
+    //height: 848px;
+    height:100%;
+}
+.logo{
+    width: 180px;
+}
+.login-bg{
+    background: url('../images/oms/bg.jpg') no-repeat;
+    width: 100%;
+    //height: 720px;
+    height:75%;
+}
+@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+    .login-bg{
+        height:85%;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .login-bg{
+        height:85%;
+    }
+}
+@media only screen and (min-height: 1024px) and (max-height: 1024px) {
+    .login-bg{
+        height:112%;
+    }
+}
+@media only screen and (min-height: 1100px){
+    .login-bg{
+        height:112%;
+    }
+}
+.login-box{
+    border-radius: 4px;
+    position: absolute;
+    margin-top: 6%;
+    width: 30%;
+    min-width: 400px;
+    background: #fff;
+    margin-left: 10%;
+    height: 50%;
+}
+@media only screen and (min-width: 1024px) and (max-width: 1366px) {
+    .login-box{
+        margin-top: 11%;
+        width: 35%;
+        margin-left: 12%;
+        height: 50%;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .login-box{
+        margin-top: 11%;
+        width: 40%;
+        margin-left: 12%;
+        height: 56%;
+    }
+}
+@media only screen and (min-height: 1024px) and (max-height: 1024px) {
+    .login-box{
+        margin-top: 21%;
+        width: 40%;
+        margin-left: 12%;
+        height: 40%;
+    }
+}
+@media only screen and (min-height: 1100px){
+    .login-box{
+        margin-top: 21%;
+        width: 40%;
+        margin-left: 12%;
+        height: 40%;
+    }
+}
+.login-box .iconfont{
+    position: absolute;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.login-box input.form-control{
+    padding: 16px 30px;
+    border-radius: 2px;
+    box-sizing: border-box;
+}
+.login-box label.input-checkbox-1 b{
+    color:#999;
+    font-weight: 100;
+}
+.login-box .btn-primary{
+    padding: 10px;
+    border-radius: 3px;
+}
+.oms-footer{
+    background: #f4f4f4;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+}
+
+/*头部*/
+.topHide{
+    font-size: 12px;
+    display: inline-block;
+    padding: 0;
+    border-top: 0;
+    border-radius: 0 0 3px 3px;
+    width: 80px;
+}
+.h-0{
+    height: 0;
+}
+.header{
+    background: @color-theme-menu-first;
+    height: 61px;
+}
+.header-content{
+    transition: margin-top @time-normal;
+}
+.header-hide{
+    margin-top: -61px;
+}
+.header-hide .topHide span{
+    transform: rotate(180deg);
+}
+.topHide span{
+    transition: transform @time-normal;
+    display: inline-block;
+}
+.header .btn-headerTab{
+    padding: 9.5px;
+    width: auto;
+    min-width: 100px;
+    //margin-top: 13px;
+    background: @color-theme-main;
+    color:white;
+}
+.header .logo{
+    width: 14%;
+    height: 100%;
+    background: @color-theme-main;
+}
+.header .logo img{
+    height: 100%;
+    max-width:100%;
+    cursor: pointer;
+    padding: 2%;
+    box-sizing: border-box;
+}
+.header .navbar-bl{
+    padding: 0 20px;
+    cursor: pointer;
+    height: 61px;
+    line-height: 61px;
+    color: @color-fff;
+    transition: all @time-normal;
+}
+.header .navbar-bl:hover{
+    background: @color-theme-main;
+}
+.header .navbar-bl:hover .navbar-box{
+    display: block;
+}
+
+.header .navbar-bl .headPortrait{
+    width: 40px;
+    height: 40px;
+}
+.header .navbar-bl .iconfont{
+    font-size: 12px;
+}
+.header .navbar-box{
+    color: @color-fff;
+    display: none;
+    position: absolute;
+    background: @color-theme-menu-first;
+    width: 180px;
+    padding: 5px;
+    margin-top: -5px;
+    margin-left: -20px;
+    z-index: 100;
+}
+.header .navbar-box li{
+    cursor: pointer;
+    padding: 5px;
+    line-height: initial;
+    transition: all @time-normal;
+}
+.header .navbar-box.active{
+    background: @color-theme-main;
+}
+.header .navbar-box li.active{
+    background: @color-theme-main;
+}
+.header .navbar-box li:hover{
+    background: @color-theme-branch;
+}
+
+/*搜索栏*/
+.searchBar .bar{
+    width: 60%;
+}
+.searchBar .bar *{
+    vertical-align: middle;
+}
+.searchBar .bar .iconfont{
+    position: absolute;
+    margin-left: 10px;
+    font-size: 16px;
+    margin-top: 10px;
+}
+.searchBar .bar .input-text{
+    padding: 10px 30px;
+    width: 40%;
+    box-shadow: 0 0 6px @color-line;
+}
+.searchBar .btn-search{
+    padding: 9px;
+    border-radius: 0 3px 3px 0;
+    margin-left: -4px;
+    border: 1px solid @ico-yellow;
+    background: @ico-yellow;
+    color:@color-fff;
+    box-shadow: 0 0 6px @color-line;
+}
+.searchBar .btn-search:hover{
+    border: 1px solid @color-theme-main;
+    background: @color-theme-main;
+}
+.searchBar .menu li{
+    display: inline-block;
+    padding: 8px 10px;
+    cursor: pointer;
+    transition: all @time-normal;
+}
+.searchBar .menu li:hover{
+    background: @color-theme-branch;
+    color: @color-fff;
+}
+
+/*首页部分*/
+.panels{
+    width: 96%;
+    margin-left: 2%;
+    background: @color-fff;
+    color: @color-theme-main;
+    box-sizing: border-box;
+}
+.panels .title{
+    border-left:4px solid @color-theme-main ;
+    padding-left: 10px;
+}
+.panels .upper{
+    margin-left: 20px;
+    padding: 3px 0;
+    font-size: 12px;
+    border: 1px solid @color-theme-main;
+    cursor: pointer;
+}
+.panels .panels-tab{
+    border: 1px solid @color-line;
+    transition: all @time-normal;
+    height: 260px;
+}
+.panels .panels-tab:hover{
+    border: 1px solid @color-theme-main;
+}
+.panels .panels-list li{
+    border-bottom: 1px solid @color-line;
+    padding: 0.75rem;
+    cursor: pointer;
+}
+.panels .panels-list li:nth-last-child(1){
+    border-bottom: 0;
+}
+.panels .ico{
+    font-size: 40px;
+    height: 40px;
+    margin-left: 20px;
+    display: inline-block;
+}
+.panels .panels-tab .numbers{
+    position: absolute;
+    margin-left: -16px;
+    width: 30px;
+    text-align: center;
+    display: inline-block;
+    background: @ico-red;
+    color: @color-fff;
+    font-size: 12px;
+    border-radius: 10px;
+}
+
+/*图标颜色*/
+.ico-purple{
+    color: @ico-purple;
+}
+.ico-blue{
+    color: @ico-blue;
+}
+.ico-yellow{
+    color: @ico-yellow;
+}
+.ico-red{
+    color: @ico-red;
+}
+.ico-green{
+    color: @ico-green;
+}
+.ico-brown{
+    color: @ico-brown;
+}
+.ico-per{
+    color: @ico-per;
+}
+
+/*菜单的修改*/
+.menu-hide .content-left{
+    margin-left: -14%;
+}
+.menu-hide .content-right{
+    width: 100%;
+}
+.menu-hide .content-left .btn-left{
+    left: 0;
+}
+.menu-hide .content-left .btn-left span{
+    transform: rotate(180deg);
+}
+.content-left .btn-left span{
+    transition: transform @time-normal;
+    font-size: 12px;
+}
+.content-left{
+    float: left;
+    width: 14%;
+    background: @color-f4;
+    transition: margin-left @time-normal;
+}
+.content-right{
+    float: left;
+    width: 86%;
+    background: #fff;
+    transition: width @time-normal;
+}
+.left-menu{
+    border-right: 1px solid @color-line;
+    border-bottom: 1px solid @color-line;
+    text-align: center;
+    min-height: 400px;
+}
+.left-menu div{
+    cursor: pointer;
+    box-sizing: border-box;
+}
+.left-menu li.active div{
+    background: @color-fff;
+}
+.left-menu div p{
+    padding: 10px 0;
+    width: 80%;
+    border-top: 1px dashed #dbdbdb;
+    margin: 0 auto;
+}
+.left-menu li.active div p{
+    border-top:0;
+}
+.left-menu .down{
+    font-size: 12px;
+}
+.left-menu li ul{
+    padding-left: 15px;
+    padding-bottom: 8px;
+}
+.left-menu li ul li{
+    cursor: pointer;
+    padding: 8px 0;
+    color: @color-666;
+}
+.content-left .btn-left{
+    position: absolute;
+    left: 14%;
+    margin-top: 200px;
+    margin-left: -1px;
+    height: 80px;
+    width: 22px;
+    border-radius: 0 4px 4px 0;
+    border: 1px solid @color-line;
+    transition: left @time-normal;
+}
+.box{
+    height: 39px;
+    line-height:30px
+}
+@-moz-document url-prefix() {
+    .searchBar .btn-search{
+        padding: 6px;
+    }
+}
+
+[v-cloak] {
+    display: none;
+}

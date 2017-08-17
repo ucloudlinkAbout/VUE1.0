@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数据构造平台</title>
+    <link href="../stylesheets/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../stylesheets/style.css" rel="stylesheet"/>
+    <script src="../javascripts/libs/jquery.2.1.4.min.js"></script>
+    <script src="../javascripts/libs/bootstrap.min.js"></script>
+    <script src="../javascripts/libs/vue.min.js"></script>
+</head>
+<body id="app">
+<nav class="navbar navbar-default navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-collapse">
+            <img class="nav-img fl" src="../images/logo_icon.png"/>
+        </div>
+    </div>
+</nav>
+<div class="container pb50">
+    <div class="clearfix">
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#makeData">构造数据</button>
+        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#makeDataExample">样例</button>
+        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#key">关键字说明</button>
+    </div>
+
+    <div class="alert alert-warning alert-dismissible fade in mt10">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">×</span><span class="sr-only">Close</span></button>
+        <strong>注意：</strong>一个名称的接口只能有一个json数据，后续接口若是同名的话，将覆盖之前的schema和生成的数据，这点请注意！
+    </div>
+
+    <div class="mt10">
+        <div class="system vm" v-for="(r,rdata) in listData">
+            <p class="title"><label class="title-click-fix hand"><span v-text="r"></span></label><span class="num"><b v-text="rdata.length"></b>个构造数据</span></p>
+            <ul class="label-fix">
+                <li v-for="data in rdata">
+                    <p><a target="_blank" v-bind:href="data.link" v-text="data.api"></a><span>负责人：<b v-text="data.author"></b></span></p>
+                    <div class="tx-2">数据描述：<b v-text="data.desc"></b></div>
+                    <div class="tx-2">创建时间：<b v-text="data.createTime"></b></div>
+                    <div class="tx-2">创建时间：<b v-text="data.updateTime"></b></div>
+                    <div class="clearfix">
+                        <button class="btn btn-default" v-on:click="openHide">展开schema详情</button>
+                        <pre class="mt10" v-html="data.schema" style="display: none;"></pre>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="makeData">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+                <h4 class="modal-title">构造数据</h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mt10">
+                    <span class="input-group-addon">接口名称</span>
+                    <input type="text" class="form-control" v-model="addData.api" placeholder="接口名称">
+                </div>
+                <div class="input-group mt10">
+                    <span class="input-group-addon">创建人</span>
+                    <input type="text" class="form-control" v-model="addData.author" placeholder="创建人">
+                </div>
+                <textarea v-model="addData.desc" class="w-100 form-control mt10" placeholder="描述"></textarea>
+                <textarea v-model="addData.schema" class="w-100 form-control mt10 textarea" placeholder="构造结构"></textarea>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" v-on:click="addSchema">构造</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="makeDataExample">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+                <h4 class="modal-title">构造数据</h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mt10">
+                    <span class="input-group-addon">接口名称</span>
+                    <input type="text" class="form-control" v-model="addDataExample.api" placeholder="接口名称">
+                </div>
+                <div class="input-group mt10">
+                    <span class="input-group-addon">创建人</span>
+                    <input type="text" class="form-control" v-model="addDataExample.author" placeholder="创建人">
+                </div>
+                <textarea v-model="addDataExample.desc" class="w-100 form-control mt10" placeholder="描述"></textarea>
+                <textarea v-model="addDataExample.schema" class="w-100 form-control mt10 textarea" placeholder="构造结构"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="key">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+                <h4 class="modal-title">构造数据案例说明</h4>
+            </div>
+            <div class="modal-body">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a href="javascript:" data-toggle="tab" data-target="#tab-list">列表类数据构建</a></li>
+                    <li><a href="javascript:" data-toggle="tab" data-target="#tab-object">普通数据构建</a></li>
+                    <li><a href="javascript:" data-toggle="tab" data-target="#tab-objectComp">嵌套对象数据构建</a></li>
+                </ul>
+                <div class="tab-content mt10" style="height: 500px; overflow: auto;">
+                    <div class="tab-pane fade in active" id="tab-list">
+<pre style="display: block;">
+{
+    "streamNo": "web_bss147684821077692157",
+    "resultCode": "00000000",     //生成的数据的状态最好是00000000
+    "resultDesc": "成功",
+    "data": {
+        "perPageCount": 30,     //数据分页的数
+        "currentPage": 1,
+        "totalCount": 40,     //数据条数，若数据条数超过分页数，则产生的数据数量与分页数量相等
+        "totalPageCount": 1,
+        "dataList": [
+            {
+                "id": "id",     //id类型的生成
+                "createTime": "date(-)",     //日期类型的生成，+和-代表相对与今天之前还是之后的日期
+                "customerId": "id",
+                "name": "string(5,10)",     //字符串类型的生成，数字代表字符串的长度范围
+                "countryCode": "number(1)",    //数字类型的数据生成，数字代表数字数据的长度
+                "phone": "number(11)",
+                "goods": "goods",    //特殊定义的，销售品类型的数据
+                "lanType": "zh-CN",    //如果是没有定义的数据，默认写什么值就会出什么值
+                "arr": [{       //数组类型的值，支持深层嵌套
+                    "id": "id",
+                    "createTime": "date(-)",
+                    "customerId": "id",
+                    "name": "string(5,10)",
+                    "countryCode": "number(1)",
+                    "phone": "number(11)",
+                    "goods": "goods",
+                    "lanType": "zh-CN"
+                }, 5],//数组类型的第二个参数是生成的记录个数
+                "address": {//对象类型的数据，同样支持深层嵌套
+                    "zipcode": "number(6)",
+                    "country": "country",       //特殊定义的，国家类型的数据
+                    "province": "province",     //特殊定义的，省份类型的数据
+                    "city": "city",     //特殊定义的，城市类型的数据
+                    "address": "road",      //特殊定义的，道路类型的数据
+                    "email": "email"        //特殊定义的，邮箱类型的数据
+                },
+                "isDefault": "boolean",     //特殊定义的，布尔类型
+                "isIdentify": "boolean",
+                "createCustId": "id",
+                "mvnoId": "id",
+                "isDeleted": "boolean"
+            }
+        ]
+    }
+}
+</pre>
+                    </div>
+                    <div class="tab-pane fade" id="tab-object">
+<pre style="display: block;">
+{
+    "streamNo": "web_bss147684821077692157",
+    "resultCode": "00000000",     //生成的数据的状态最好是00000000
+    "resultDesc": "成功",
+    "id": "id",     //id类型的生成
+    "createTime": "date(-)",     //日期类型的生成，+和-代表相对与今天之前还是之后的日期
+    "customerId": "id",
+    "name": "string(5,10)",     //字符串类型的生成，数字代表字符串的长度范围
+    "countryCode": "number(1)",    //数字类型的数据生成，数字代表数字数据的长度
+    "phone": "number(11)",
+    "goods": "goods",    //特殊定义的，销售品类型的数据
+    "lanType": "zh-CN"     //如果是没有定义的数据，默认写什么值就会出什么值
+}
+</pre>
+                    </div>
+                    <div class="tab-pane fade" id="tab-objectComp">
+<pre style="display: block;">
+{
+    "streamNo": "web_bss147684821077692157",
+    "resultCode": "00000000",     //生成的数据的状态最好是00000000
+    "resultDesc": "成功",
+    "id": "id",     //id类型的生成
+    "createTime": "date(-)",     //日期类型的生成，+和-代表相对与今天之前还是之后的日期
+    "customerId": "id",
+    "name": "string(5,10)",     //字符串类型的生成，数字代表字符串的长度范围
+    "countryCode": "number(1)",    //数字类型的数据生成，数字代表数字数据的长度
+    "phone": "number(11)",
+    "goods": "goods",    //特殊定义的，销售品类型的数据
+    "lanType": "zh-CN",    //如果是没有定义的数据，默认写什么值就会出什么值
+    "arr": [{       //数组类型的值，支持深层嵌套
+        "id": "id",
+        "createTime": "date(-)",
+        "customerId": "id",
+        "name": "string(5,10)",
+        "countryCode": "number(1)",
+        "phone": "number(11)",
+        "goods": "goods",
+        "lanType": "zh-CN"
+    }, 5],//数组类型的第二个参数是生成的记录个数
+    "address": {//对象类型的数据，同样支持深层嵌套
+        "zipcode": "number(6)",
+        "country": "country",       //特殊定义的，国家类型的数据
+        "province": "province",     //特殊定义的，省份类型的数据
+        "city": "city",     //特殊定义的，城市类型的数据
+        "address": "road",      //特殊定义的，道路类型的数据
+        "email": "email"        //特殊定义的，邮箱类型的数据
+    },
+    "isDefault": "boolean",     //特殊定义的，布尔类型
+    "isIdentify": "boolean",
+    "createCustId": "id",
+    "mvnoId": "id",
+    "isDeleted": "boolean"
+}
+</pre>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+<script src="../javascripts/common.js"></script>
+<script src="../javascripts/index.js"></script>
+</body>
+</html>

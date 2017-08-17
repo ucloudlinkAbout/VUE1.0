@@ -1,0 +1,78 @@
+/**
+ * Created by chenwenxiao on 2016/9/19.
+ * checkbox 和 radio 的使用
+ */
+/*单选框*/
+.input-radio{
+    display: inline-block;
+    cursor: pointer;
+}
+.input-radio input[type=radio]{
+    display: none;
+}
+.input-radio span{
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    border-radius: 50%;
+    margin-bottom: -2px;
+    text-align: center;
+    background: url('@{imgUrl}default.png');
+}
+.input-radio input[type=radio]:checked+span {
+    background: url('@{imgUrl}selected_2.png');
+}
+.input-radio input[type=radio][readonly]+span {
+    background: url('@{imgUrl}select_1_readonly.png');
+}
+.input-radio input[type=radio][readonly][checked]+span {
+    background: url('@{imgUrl}select_2_readonly.png');
+}
+
+/*多选框1*/
+.input-checkbox,.input-checkbox-1{
+    display: inline-block;
+    cursor: pointer;
+    vertical-align: middle;
+}
+.input-checkbox *,.input-checkbox-1 *{
+    vertical-align: middle;
+}
+.input-checkbox input[type=checkbox],.input-checkbox-1 input[type=checkbox]{
+    display: none;
+}
+.input-checkbox span,.input-checkbox-1 span{
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    text-align: center;
+    background: url('@{imgUrl}default.png');
+}
+.input-checkbox input[type=checkbox]:checked+span,.input-checkbox-1 input[type=checkbox]:checked+span {
+    background: url('@{imgUrl}selected_1.png');
+}
+.input-checkbox b,.input-radio b,.input-checkbox-1 b{
+    display: inline-block;
+    min-width: 10px;
+    font-weight: 400;
+}
+.input-checkbox input[type=checkbox][readonly]+span {
+    background: url('@{imgUrl}select_1_readonly.png');
+}
+.input-checkbox input[type=checkbox][readonly][checked]+span {
+    background: url('@{imgUrl}selected_1.png');
+}
+
+/*多选框2*/
+.input-checkbox-1 span{
+    background: url('@{imgUrl}checkbox.png');
+}
+.input-checkbox-1 input[type=checkbox]:checked+span {
+    background: url('@{imgUrl}checkbox_select.png');
+}
+.input-checkbox-1 input[type=checkbox][readonly]+span {
+    background: url('@{imgUrl}checkbox_readonly.png');
+}
+.input-checkbox-1 input[type=checkbox][readonly][checked]+span {
+    background: url('@{imgUrl}checkbox_select_readonly.png');
+}

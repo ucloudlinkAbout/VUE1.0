@@ -1,0 +1,188 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote,
+/* structural elements 结构元素 */
+
+dl, dt, dd, ul, ol, li,
+/* list elements 列表元素 */
+
+pre,
+/* text formatting elements 文本格式元素 */
+
+fieldset, lengend, button, input, textarea,
+/* form elements 表单元素 */
+
+th, td {
+    /* table elements 表格元素 */
+    margin: 0;
+    padding: 0;
+}
+
+ul, ol {
+    list-style: none;
+}
+
+em,i,b {
+    font-style: normal;
+}
+
+li {
+    list-style: none;
+}
+
+/* 重置列表元素 */
+
+body {
+    font-family: "微软雅黑", "Microsoft yahei", Helvetica, "Heiti SC", sans-serif;
+}
+
+textarea, input {
+    background: #fff;
+}
+
+img {
+    border: none;
+}
+
+a:link{
+    text-decoration: none!important;
+    outline: none;
+}
+a:hover {
+    text-decoration: none!important;
+    outline: none;
+}
+a:visited {
+    text-decoration: none!important;
+    outline: none;
+}
+a:active {
+    star:expression(this.onFocus=this.blur());
+    text-decoration: none!important;
+    outline: none;
+}
+
+.clear:after, .clear:before {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.clear {
+    zoom: 1;
+}
+
+.ellipsis {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+table {
+    width: 100%;
+    border: 0 none;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-weight: normal;
+    font-family: "微软雅黑", "Microsoft yahei", Helvetica, "Heiti SC", sans-serif;
+}
+
+:focus {
+    outline: 0;
+}
+
+input{
+    width: auto;                    /*现代浏览器下识别*/
+    height: 20px;
+    *width: 1;                      /*IE7和IE6识别*/
+    padding: 7px 10px;
+    background: none;
+    overflow: visible; 
+    font-size: 16px;             /*只有设置这个属性IE下padding才能生效*/
+    font-family: "微软雅黑";
+    border: 1px solid #999999;
+    color: #999999;
+}
+
+
+input,textarea {
+    outline: none;
+    box-sizing:content-box;
+}
+
+textarea {
+    resize: none;
+    overflow: auto;
+}
+
+html body input:focus {
+    /*-webkit-transition: border linear .2s, -webkit-box-shadow linear .5s;*/
+    border-color: rgb(108,176,75);
+    -webkit-box-shadow: 0 0 10px -3px rgba(108,176,75, 3);
+    box-shadow: 0 0 10px -3px rgba(108,176,75, 3);
+    border: 1px solid #6bb04d;
+    color: #666666;
+}
+
+input.readonly{
+    color: #DEDEDE;
+}
+
+input.readonly:hover{
+    cursor: not-allowed;
+}
+
+input.readonly:focus {
+    border: 1px solid #fff;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    color: #DEDEDE;
+}
+
+.rounded {
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -o-border-radius: 4px;
+    -ms-border-radius: 4px;
+    border-radius: 4px;
+}
+
+input::-webkit-input-placeholder {
+    color: #999999;
+}
+/* WebKit browsers */
+input::-moz-placeholder {
+    color: #999999;
+}
+/* Mozilla Firefox 19+ */
+input:-moz-placeholder {
+    color: #999999;
+}
+/* Mozilla Firefox 4 to 18 */
+input:-ms-input-placeholder {
+    color: #999999;
+}
+/* Internet Explorer 10+ */
+.vertialign_mid {
+    vertical-align: middle;
+}
+
+input::-ms-clear,input::-ms-reveal{
+    display:none;
+}
+
+input:-webkit-autofill {
+    -webkit-box-shadow:0 0 0px 1000px #f8f8f8 inset;
+    /*-webkit-text-fill-color: #FFFFFE;*/
+}
+.double_click {                     /*阻止双击选中文本*/
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: -moz-none;
+}
+

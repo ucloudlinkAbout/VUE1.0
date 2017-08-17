@@ -1,0 +1,82 @@
+/**
+ * Created by chenwenxiao on 2016/9/26.
+ * debug中心的样式
+ */
+.debug{
+
+}
+.debug .debug-icon{
+    position: fixed;
+    bottom: -12%;
+    right: 3.5%;
+    transition: bottom @time-normal;
+}
+.debug .debug-icon .debug-icon-num{
+    background: @ico-red;
+    color: @font-color-fff;
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    text-align: center;
+    font-size: 14px;
+    border-radius: 50%;
+    position: absolute;
+    margin-left: 24px;
+    margin-top: -8px;
+}
+.debug .debug-icon-show{
+    bottom: 2%;
+}
+.debug .debug-leftBar{
+    z-index: 100000;
+    position: fixed;
+    height: 100%;
+    width: 200px;
+    right: -210px;
+    top:0;
+    background: @font-color-fff;
+    box-shadow: 2px 2px 8px;
+    transition: right @time-normal;
+}
+.debug .debug-leftBar-show{
+    right: 0;
+}
+.debug .debug-leftBar .debug-leftBar-header{
+    background: @brand-primary;
+}
+.debug .debug-leftBar .debug-leftBar-header .debug-leftBar-right{
+    padding: 10px;
+    cursor: pointer;
+    display: inline-block;
+    color: @font-color-fff;
+    background: @ico-red;
+}
+.debug .debug-leftBar .debug-leftBar-body{
+    overflow: auto;
+    height: 100%;
+}
+.debug .debug-leftBar .debug-leftBar-body .debug-leftBar-tips{
+    padding: 10px;
+    width: 80%;
+    margin: 15px;
+    cursor: pointer;
+    background: @ico-green;
+    color: @font-color-fff;
+}
+.debug .debug-leftBar .debug-leftBar-body .debug-leftBar-tips:nth-last-child(1){
+    margin-bottom: 50px;
+}
+.debug .debug-leftBar .debug-leftBar-body .debug-leftBar-tips-title{
+    text-overflow:ellipsis;
+    overflow: hidden;
+    width: 100%;
+    white-space: nowrap;
+    font-size: @font-size-base;
+}
+.debug .debug-leftBar .debug-leftBar-body .debug-leftBar-tips-content{
+    text-indent: 2em;
+    font-size: @font-size-small;
+    height: 48px;
+    overflow: hidden;
+}

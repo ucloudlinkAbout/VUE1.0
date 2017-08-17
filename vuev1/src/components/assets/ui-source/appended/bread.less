@@ -1,0 +1,25 @@
+/**
+ * Created by chenwenxiao on 2016/9/19.
+ */
+.bread li{
+    display: inline-block;
+    padding: 8px 15px 0 15px;
+    cursor: pointer;
+    text-align: center;
+}
+.bread li.active{
+    border-bottom: 3px solid @brand-primary;
+}
+.bread li.active span,.bread li span{
+    width: 0;
+    height: 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    visibility: hidden;
+    display: block;
+    margin: 0 auto;
+    border-bottom: 6px solid @brand-primary;
+}
+.bread li.active span{
+    visibility: visible;
+}

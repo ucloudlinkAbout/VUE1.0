@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自动化测试</title>
+    <link rel="stylesheet" href="../stylesheets/bootstrap.min.css">
+    <link rel="stylesheet" href="../stylesheets/style.css">
+    <script src="../javascripts/libs/jquery.2.1.4.min.js"></script>
+    <script src="../javascripts/libs/bootstrap.min.js"></script>
+    <script src="../javascripts/libs/vue.min.js"></script>
+    <!--<script src="../javascripts/libs/vue.js"></script>-->
+    <script src="../javascripts/libs/md5.js"></script>
+    <script src="../javascripts/libs/jquery.cookie.js"></script>
+    <script src="../javascripts/libs/echarts.simple.min.js"></script>
+</head>
+<body id="app">
+<nav class="navbar navbar-default navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-collapse">
+            <a href="/doc/views/test-main.html">
+                <img class="nav-img" src="../images/logo_icon.png"/>
+            </a>
+            <ul class="nav navbar-nav navbar-right">
+                <li v-if="currentUsername"><p class="navbar-text" v-text="'当前登录：'+currentUsername"></p></li>
+                <li data-target="#login" data-toggle="modal"><a href="javascript:">登录</a></li>
+                <li data-target="#setCharge" data-toggle="modal">
+                    <a href="javascript:">
+                        <span v-if="chargePeople.username" v-text="'负责人：'+chargePeople.username"></span>
+                        <span v-else>设置负责人</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="pb50 clearfix">
+    <div class="col-xs-3 col-sm-2">
+        <div class="test-case-ul" id="test-case-ul">
+            <div class="" v-for="(key,value) in apiArrObject">
+                <p class="bg-primary js-hand" v-text="key"></p>
+                <ul class="hide list-group mb10" style="display: none;">
+                    <li class="list-group-item" v-on:click="e_selectApi" v-bind:value="item.dirPath" v-text="item.dirPath" v-for="item in value" :title="item.dirPath">12345</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-9 col-sm-10">
+        <button class="btn btn-success" data-target="#selectTestApi" data-toggle="modal" v-on:click="e_getCaseList">开始测试</button>
+        <a class="btn btn-primary" href="test-version.html">新增测试版本</a>
+        <a class="btn btn-primary" href="test-main.html">版本测试详情</a>
+        <button class="btn btn-default" data-toggle="modal" data-target="#createScan">重新扫描swagger</button>
+        <button class="btn btn-default" v-on:click="e_createUsecase" style="display: none;">系统生成用例</button>
+
+        <div class="form-inline mt10">
+            <div class="input-group">
+                <span class="input-group-addon">选择swagger扫描版本</span>
+                <select class="form-control" v-on:change="e_changeSwagger" v-model="swaggerVersionValue">
+                    <option v-bind:value="item._id" v-for="item in swaggerVersion" v-text="item.description + '-----' + item.author"></option>
+                </select>
+            </div>
+            <div class="input-group">
+                *尽量选择最新swagger扫描版本，默认只提供最新的10个版本
+            </div>
+        </div>
+        <div class="form-inline mt10">
+            <div class="input-group">
+                <span class="input-group-addon">选择测试规划版本</span>
+                <select class="form-control" v-model="currentTestVersion">
+                    <option v-bind:value="item" v-for="item in testVersionList" v-text="item.version + '-----' + item.desc"></option>
+                </select>
+            </div>
+            <div class="input-group">
+                *测试用例规程以版本为单位进行统计，若没有版本，可以去<a href="test-version.html">新建</a>
+            </div>
+        </div>
+        <!--<p>swagger版本尽量选择最新的版本，默认只提供最新的10个版本供选择</p>-->
+        <!--<p>测试用例规程以版本为单位进行统计，若没有版本，可以去新建，下面只罗列打开的版本</p>-->
+
+        <div class="panel panel-primary mt10" v-if="selectedAPIData.dirPath">
+            <div class="panel-heading">
+                <p class="panel-title"><span class="vm mr5 label label-warning" v-text="selectedAPIData.method"></span><span class="vm" v-text="'接口：'+ selectedAPIData.dirPath"></span></p>
+            </div>
+            <div class="panel-body">
+                <ul class="nav-tabs nav mt10">
+                    <li class="active" data-target="#param" data-toggle="tab"><a href="javascript:">接口详情</a></li>
+                    <li data-target="#usecase" data-toggle="tab"><a href="javascript:">接口用例</a></li>
+                    <li data-target="#caseConfirm" data-toggle="tab"><a href="javascript:" v-on:click="e_getOpenCaseList">测试结果确认</a></li>
+                    <li data-target="#caseTotal" data-toggle="tab"><a href="javascript:">历史统计</a></li>
+                </ul>
+
+                <div class="tab-content mt20">
+                    <div class="tab-pane fade in active" id="param">
+                        <div class="mt10">
+                            <h4 v-show="selectedAPIData.summary" v-text="'接口描述：' + selectedAPIData.summary"></h4>
+                            <h4 v-show="selectedAPIData.note" v-text="'备注：' + selectedAPIData.note"></h4>
+                            <h4 v-show="selectedAPIData.contentType" v-text="'ContentType：' + selectedAPIData.contentType"></h4>
+                            <h4 class="mt5">输入参数：</h4>
+                            <div v-if="selectedAPIData.param" class="mt5 test-case-table">
+                                <table class="table table-responsive table-bordered">
+                                    <thead><tr><th>参数名称</th><th>参数类型</th><th>参数描述</th><th>是否必填</th></tr></thead>
+                                    <tbody>
+                                    <tr v-for="(key,value) in selectedAPIData.param.properties">
+                                        <td v-text="key"></td>
+                                        <template v-if="value.type === 'array'">
+                                            <td v-text="value.type+'<'+value.items.type+'>'"></td>
+                                        </template>
+                                        <template v-else>
+                                            <td v-text="value.type"></td>
+                                        </template>
+                                        <td v-text="value.description"></td>
+                                        <td v-text="value.required"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p v-else>无</p>
+                            <h4>输出参数：</h4>
+                            <div class="mt5 test-case-table">
+                                <table class="table table-responsive table-bordered">
+                                    <thead><tr><th>参数名称</th><th>参数类型</th><th>参数描述</th><th>是否必填</th></tr></thead>
+                                    <tbody>
+                                    <tr v-for="(key,value) in selectedAPIData.result.properties">
+                                        <td v-text="key"></td><td v-text="value.type"></td><td v-text="value.description"></td><td v-text="value.required"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="usecase">
+                        <h4 class="mt10" v-text="'参数总体覆盖率：' + userCaseItem.allPercent"></h4>
+                        <h4 class="mt10" v-text="'用例数量：' + userCaseItem.count"></h4>
+
+                        <div class="clearfix mt10">
+                            <button class="btn btn-success" v-on:click="e_saveCase">保存</button>
+                            <button class="btn btn-warning" v-on:click="e_addCase">再加一个用例</button>
+                        </div>
+                        <div class="mt20 test-case-inputGroup" id="test-case-inputGroup">
+                            <div class="js-case-item mt10 form-inline" v-for="dt in selectedAPIUseCaseList">
+                                <p v-show="dt.updateTime!= undefined" class="js-ti">
+                                    <label>用例修改时间</label>
+                                    <span class="form-control-static" v-text="dt.updateTimeShow"></span>
+                                    <input type="hidden" name="updateTime" v-bind:value="dt.updateTime"/>
+                                </p>
+                                <p v-show="dt.createTime!= undefined" class="js-ti">
+                                    <label>用例创建时间</label>
+                                    <span class="form-control-static" v-text="dt.createTimeShow"></span>
+                                    <input type="hidden" name="createTime" v-bind:value="dt.createTime"/>
+                                </p>
+                                <p v-show="dt.percent!= undefined" class="js-ti">
+                                    <label>参数覆盖率</label>
+                                    <span class="form-control-static" v-text="dt.percent"></span>
+                                </p>
+                                <p class="js-ti">
+                                    <label>用例描述</label>
+                                    <input type="text" class="form-control w-90" v-bind:value="dt.desc" name="desc" />
+                                </p>
+                                <p class="js-ti">
+                                    <label>负责人</label>
+                                    <input type="text" class="form-control w-90" v-bind:value="dt.author" name="author" />
+                                </p>
+                                <template v-for="(key, value) in dt.data">
+                                    <!-- 参数是 object -->
+                                    <div v-if="value.properties" >
+                                        <p class="js-param-key">
+                                            <label v-text="key" class="vm"></label>
+                                        </p>
+                                        <p class="js-param-value" v-for="(key1, value1) in value.properties">
+                                            <label v-text="key+'.'+key1" v-bind:for="key1" v-bind:title="key1" class="vm"></label>
+                                            <input type="text" class="form-control vm" required="{{value1.required}}" v-bind:value="value1.vv" v-bind:name="key1" v-bind:placeholder="value1.type" />
+                                        </p>
+                                    </div>
+                                    <!-- 参数是 array -->
+                                    <template v-if="value.type === 'array'">
+                                        <p class="js-param-array">
+                                            <label v-text="key" v-bind:for="key" v-bind:title="key" v-bind:data-type="value.items.type" class="vm"></label>
+                                            <input type="text" class="form-control vm" required="{{value.required}}" v-bind:value="value.vv" v-bind:name="key" v-bind:placeholder="value.type+'<'+value.items.type+'>'" />
+                                        </p>
+                                    </template>
+                                    <p v-if="value.type !== 'array' && value.properties === undefined" class="ilb js-param-item">
+                                        <label v-text="key" v-bind:for="key" v-bind:title="key" class="vm"></label>
+                                        <input type="text" class="form-control vm" required="{{value.required}}" v-bind:value="value.vv" v-bind:name="key" v-bind:placeholder="value.type" />
+                                    </p>
+                                </template>
+                                <p v-show="dt.createTime!= undefined">
+                                    <label>操作</label>
+                                    <button class="btn btn-danger mt10" v-on:click="e_delCase">删除</button>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="tab-pane fade" id="caseConfirm">
+                        <div v-if="testResultData.length !== 0">
+                            <h4>尚未确认状态的用例：</h4>
+                            <div>
+                                <button class="btn btn-default ml10" v-for="it in testResultData" v-on:click="e_selectTestResult" v-bind:class="{'btn-primary': $index === currentCase}" v-text="it.desc"></button>
+                            </div>
+                            <div class="mt10">
+                                <table class="table table-responsive table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>接口响应时间</th>
+                                        <th>接口返回码</th>
+                                        <th>测试用例逻辑测试结果信息</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td v-text="selectedTestResult.time"></td>
+                                        <td v-text="selectedTestResult.result.resultCode"></td>
+                                        <td v-text="selectedTestResult.result.resultDesc"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+
+                                <div class="mt10 mb10">
+                                    <h4>确认测试结果，是否是期望的测试结果：</h4>
+                                    <button class="btn btn-success" v-bind:data-id="selectedTestResult._id" v-on:click="e_cf_success">成功</button>
+                                    <button class="btn btn-warning" v-bind:data-id="selectedTestResult._id" v-on:click="e_cf_failed">接口出错</button>
+                                    <button class="btn btn-warning" v-bind:data-id="selectedTestResult._id" v-on:click="e_cf_unexpect">非期望结果</button>
+                                    <button class="btn btn-danger" v-bind:data-id="selectedTestResult._id" v-on:click="e_cf_giveup">结果作废</button>
+                                </div>
+
+                                <p v-text="'用例测试版本：'+selectedTestResult.version.version"></p>
+
+                                <p>接口传输参数：</p>
+                                <pre v-html="selectedTestResult.paramStr"></pre>
+
+                                <div class="clearfix mt10">
+                                    <p>接口返回结果：</p>
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a href="#cd-v1-1" data-toggle="tab">JSON数据展示</a></li>
+                                        <li><a href="#ct-v1-1" data-toggle="tab">表格展示</a></li>
+                                    </ul>
+                                </div>
+                                <div class="tab-content mt10">
+                                    <div class="tab-pane fade active in" id="cd-v1-1">
+                                        <pre v-html="selectedTestResult.resultStr"></pre>
+                                    </div>
+                                    <div class="tab-pane fade" id="ct-v1-1">
+                                        <div v-if="selectedTestResult.result.data && selectedTestResult.result.data.dataList">
+                                            <table class="table table-striped table-responsive table-bordered table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th v-for="(k,v) in selectedTestResult.result.data.dataList[0]" v-text="k"></th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr v-for="val in selectedTestResult.result.data.dataList">
+                                                    <td v-for="vl in val" v-text="vl" v-bind:title="vl"></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <p v-else>没有可以显示的数据</p>
+                                        <p>*只有符合列表规范的数据才能显示出来</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div v-else>
+                            暂无数据
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="caseTotal">
+                        <div v-if="testResultStatistics.length > 0">
+                            <div class="mt10">
+                                <div class="col-xs-2">
+                                    <ul class="list-group">
+                                        <li class="hand list-group-item" v-bind:class="{'active': currentCaseStatistics === $index }" v-on:click="e_clickVersionStatistics" v-for="item in testResultStatistics" v-text="item.version.desc" v-bind:data-id="item.version._id">v1.0.0 测试</li>
+                                    </ul>
+                                </div>
+                                <div class="col-xs-10" v-show="testResultStatisticsValue.total">
+                                    <div class="content">
+                                        <h4 v-text="'成功率（不计算作废和未处理）：'+testResultStatisticsValue.successRate"></h4>
+                                        <table class="table table-responsive table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th>版本</th>
+                                                <th>用例总数</th>
+                                                <th>尚未处理</th>
+                                                <th>成功率（不计算作废和未处理）</th>
+                                                <th>成功</th>
+                                                <th>接口出错</th>
+                                                <th>非期望结果</th>
+                                                <th>结果作废</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr>
+                                                <td v-if="testResultStatisticsValue.version" v-text="testResultStatisticsValue.version.version"></td>
+                                                <td v-text="testResultStatisticsValue.total"></td>
+                                                <td v-text="testResultStatisticsValue.defaults"></td>
+                                                <td v-text="testResultStatisticsValue.successRate"></td>
+                                                <td v-text="testResultStatisticsValue.success"></td>
+                                                <td v-text="testResultStatisticsValue.failed"></td>
+                                                <td v-text="testResultStatisticsValue.unexpect"></td>
+                                                <td v-text="testResultStatisticsValue.giveup"></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <!--<p><span>用例总数：</span><b v-text="testResultStatisticsValue.total"></b></p>-->
+                                        <!--<p><span>尚未处理：</span><b v-text="testResultStatisticsValue.defaults"></b></p>-->
+                                        <!--<p><span>成功：</span><b v-text="testResultStatisticsValue.success"></b></p>-->
+                                        <!--<p><span>接口出错：</span><b v-text="testResultStatisticsValue.failed"></b></p>-->
+                                        <!--<p><span>非期望结果：</span><b v-text="testResultStatisticsValue.unexpect"></b></p>-->
+                                        <!--<p><span>结果作废：</span><b v-text="testResultStatisticsValue.giveup"></b></p>-->
+                                        <!--<p><span>成功率（不计算作废和未处理）：</span><b v-text="testResultStatisticsValue.successRate"></b></p>-->
+                                        <div class="echart clearfix">
+                                            <div class="col-xs-6">
+                                                <div id="echart-role" style="width: 400px;height:400px;"></div>
+                                            </div>
+                                            <div class="col-xs-6">
+                                                <div id="echart-pie" style="width: 400px;height:400px"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div v-show="!testResultStatisticsValue.total">
+                                请先选择版本
+                            </div>
+                        </div>
+                        <div v-else>
+                            暂无数据
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="createScan">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+                <h4 class="modal-title">扫描swagger说明</h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mt10">
+                    <span class="input-group-addon">创建人</span>
+                    <input type="text" class="form-control" v-model="scanAdd.author" placeholder="创建人">
+                </div>
+                <textarea v-model="scanAdd.description" class="w-100 form-control mt10" placeholder="描述"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" v-on:click="e_scan_swagger">确定</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="login">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+                <h4 class="modal-title">登录账号</h4>
+            </div>
+            <div class="modal-body">
+                <div class="input-group mt10">
+                    <span class="input-group-addon">用户名</span>
+                    <input type="text" class="form-control" v-model="login.username" placeholder="用户名">
+                </div>
+                <div class="input-group mt10">
+                    <span class="input-group-addon">密码</span>
+                    <input type="text" class="form-control" v-model="login.password" placeholder="密码">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" v-on:click="e_login">确定</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="setCharge">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+                <h4 class="modal-title">负责人</h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    注意：就写本人名字就行，程序会负责自动填写进去，如：陈文骁
+                </div>
+                <div class="input-group mt10">
+                    <span class="input-group-addon">负责人</span>
+                    <input type="text" class="form-control" v-model="chargePeople.username" placeholder="负责人">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" v-on:click="e_setCharge">确定</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div class="modal fade" id="selectTestApi">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+                <h4 class="modal-title" v-text="'当前版本：'+currentTestVersion.version"></h4>
+            </div>
+            <div class="modal-body">
+                <div>
+                    注意：开始测试之前最好先重新登录获取最新的access_token，以免授权过期造成测试结果的误差
+                </div>
+                <div id="selectShowApi" style="height: 600px;overflow-y: auto;">
+                    <div class="selectShowApi" v-for="(k,v) in selectShowApi">
+                        <div class="selectShowApiTitle"><label class="hand"><input v-on:change="e_selectApiAll" type="checkbox"/><span v-text="k"></span></label></div>
+                        <ul>
+                            <li v-for="vs in v">
+                                <label class="hand"><input v-on:change="e_selectApiSingle" type="checkbox" v-bind:value="vs.api"/><span v-text="vs.api"></span></label><span class="fr" v-text="'参数覆盖率' + vs.percent"></span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-warning" v-on:click="e_selectTestApi">确定</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<script src="../javascripts/common.js"></script>
+<script src="../javascripts/test-case.js"></script>
+</body>
+</html>

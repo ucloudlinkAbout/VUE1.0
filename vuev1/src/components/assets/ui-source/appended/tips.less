@@ -1,0 +1,31 @@
+/**
+ * Created by chenwenxiao on 2016/11/2.
+ * 底部消息弹框
+ */
+.tips{
+    box-shadow: 2px 2px 10px;
+    position: fixed;
+    width: 200px;
+    bottom: 5%;
+    z-index: 100;
+    background: #fff;
+    padding: 15px;
+    border-radius: 4px;
+    left: 1%;
+    text-indent: 2em;
+    transition: bottom @time-normal;
+}
+.tips-hide{
+    bottom:-100%
+}
+.tips-warn{
+    background: @ico-yellow;
+    color: @font-color-fff;
+}
+.tips-normal{
+    color: @font-color-666;
+}
+.tips-error{
+    background: @ico-red;
+    color: @font-color-fff;
+}

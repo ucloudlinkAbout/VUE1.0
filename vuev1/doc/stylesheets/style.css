@@ -1,0 +1,159 @@
+.fl{
+    float: left;
+}
+.fr{
+    float: right;
+}
+.pb50{
+    padding-bottom: 50px;
+}
+.p5{
+    padding: 5px;
+}
+.w-100{
+    width: 100%!important;
+}
+.w-90{
+    width: 90%!important;
+}
+.mt5{
+    margin-top: 5px;
+}
+.mr5{
+    margin-right: 5px;
+}
+.mt10{
+    margin-top: 10px;
+}
+.mt20{
+    margin-top: 20px;
+}
+.mb10{
+    margin-bottom: 10px;
+}
+.ml10{
+    margin-left: 10px;
+}
+textarea.textarea{
+    height: 350px;
+}
+.ilb,.ilb *{
+    display: inline-block;
+}
+.vm,.vm *{
+    vertical-align: middle;
+}
+.hand{
+    cursor: pointer;
+}
+.loading{
+    background: rgba(0,0,0,0.25);
+    position: fixed;
+    z-index: 10000000;
+    width: 100%;
+    height: 100%;
+    top:0;
+    left: 0;
+    display: none;
+}
+.loading img{
+    position: absolute;
+    top:50%;
+    left: 50%;
+}
+.system{
+    border: 1px solid #ddd;
+    margin-top: 10px;
+    background: azure;
+}
+.system .title{
+    background: #82d239;
+    color: #fff;
+    padding: 5px 5px 0 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+.system .title label{
+    margin-bottom: 0;
+}
+.system .title span{
+    float: right;
+}
+.system ul{
+    padding: 0;
+    text-indent: 2em;
+    display: none;
+}
+.system ul li{
+    list-style: none;
+    padding: 4px 6px;
+}
+.system ul li span{
+    float: right;
+}
+.system ul li pre span{
+    float: none;
+}
+
+pre{
+    background: #fffdef;
+    padding: 10px;
+    font-size: 14px;
+    word-break: break-all;
+    width: 100%;
+    border: solid 1px #e7e1cd;
+    box-sizing: border-box;
+    text-indent: 0;
+    display: none;
+}
+.label-fix li{
+    text-indent: 0;
+}
+.test-case-ul{
+    font-size: 12px;
+}
+.test-case-ul p {
+    border-radius: 4px;
+    padding: 10px;
+}
+.test-case-ul ul{
+    margin: 0;
+    padding: 0;
+}
+.test-case-ul ul li{
+    cursor: pointer;
+    overflow: hidden;
+}
+.test-case-ul .list-group{
+    margin-bottom: 0;
+}
+.test-case-table table tbody tr td{
+    padding: 5px;
+}
+.test-case-inputGroup > div {
+    padding: 10px 0;
+}
+.test-case-inputGroup > div:nth-of-type(odd) {
+    background-color: #f1f1f1;
+}
+.test-case-inputGroup label {
+    margin-right: 10px;
+    width: 100px;
+    text-align: right;
+}
+.test-case-inputGroup input.form-control{
+}
+input[required].form-control{
+    border: 1px solid;
+}
+#caseConfirm pre{
+    display: inherit;
+}
+
+
+/**************************************tips提示条样式***************************************/
+.tips_tip { position: absolute; z-index: 10002; left: 50%; }
+.tips_tip_pointer { width: 0; height: 0; position: absolute; border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-right: 10px solid #ed6a74; margin-left: -10px; margin-top: 10px; }
+.tips_tip_content { color: #fff; background: #ed6a74; padding: 8px; font-size: 12px; max-width: 220px; }
+#temp_charge { display: none; }

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>响应式调整</title>
+    <link rel="stylesheet" href="../stylesheets/bootstrap.min.css">
+    <link href="../stylesheets/style.css" rel="stylesheet"/>
+    <script src="../javascripts/libs/jquery.2.1.4.min.js"></script>
+    <script src="../javascripts/libs/bootstrap.min.js"></script>
+    <script src="../javascripts/libs/vue.min.js"></script>
+    <style>
+        .nav-modify img{
+            height: 25px;
+        }
+        .abc{
+            width: 1366px;
+            margin: 0 auto;
+            background-size: 100%;
+            height: 1500px;
+            background-image:url("/doc/images/device/iMac.png") ;
+            background-repeat: no-repeat;
+        }
+        .if-bd{
+            overflow-x: hidden;
+            overflow-y: auto;
+        }
+        iframe{
+            border: 0;
+        }
+    </style>
+</head>
+<body id="app">
+<nav class="navbar navbar-default navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-collapse">
+            <img class="nav-img fl" src="../images/logo_icon.png"/>
+            <ul class="nav navbar-nav nav-modify" id="nav-header">
+                <li class="dropdown"><a href="javascript:" v-el:pcc v-on:click="selectDevice" data-type="iMac" title="笔记本电脑"><img src="/doc/images/device/iMac.png"></a></li>
+                <li class="dropdown"><a href="javascript:" v-on:click="selectDevice" data-type="iPad" title="iPad-竖屏"><img src="/doc/images/device/iPad.png"></a></li>
+                <li class="dropdown"><a href="javascript:" v-on:click="selectDevice" data-type="iPad-V" title="iPad-横屏"><img src="/doc/images/device/iPad_2.png"></a></li>
+                <li class="dropdown"><a href="javascript:" v-on:click="selectDevice" data-type="iPad-pro" title="iPad-pro-竖屏"><img src="/doc/images/device/iPad-mini.png"></a></li>
+                <li class="dropdown"><a href="javascript:" v-on:click="selectDevice" data-type="iPad-pro-V" title="iPad-pro-横屏"><img src="/doc/images/device/iPad-mini_2.png"></a></li>
+                <li class="dropdown"><a href="javascript:" v-on:click="selectDevice" data-type="iPad-mini" title="iPad-mini-竖屏"><img src="/doc/images/device/iPad-pro.png"></a></li>
+                <li class="dropdown"><a href="javascript:" v-on:click="selectDevice" data-type="iPad-mini-V" title="iPad-mini-横屏"><img src="/doc/images/device/iPad-pro_2.png"></a></li>
+                <li class="dropdown"><a href="javascript:" v-on:click="selectDevice" data-type="iPhone6" title="iphone-6"><img src="/doc/images/device/iPhone-6.png"></a></li>
+                <li class="dropdown"><a href="javascript:" v-on:click="selectDevice" data-type="iPhone6s" title="iphone-se"><img src="/doc/images/device/iPhone-se.png"></a></li>
+            </ul>
+            <ul class="nav navbar-nav nav-modify fr">
+                <li class="dropdown"><a href="../index.html">返回</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container pb50">
+</div>
+<div class="mt20">
+    <h3 v-text="title" class="text-center"></h3>
+    <h5 v-text="titleDesc" class="text-center"></h5>
+    <div class="abc" id="abc">
+        <div class="if-bd">
+            <iframe id="frameWork" src=""></iframe>
+        </div>
+    </div>
+</div>
+
+<script src="../javascripts/test-main.js"></script>
+</body>
+</html>

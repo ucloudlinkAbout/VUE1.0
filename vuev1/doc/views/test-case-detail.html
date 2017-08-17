@@ -1,0 +1,1077 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自动化测试系统</title>
+    <link rel="stylesheet" href="../stylesheets/bootstrap.min.css">
+    <script src="../javascripts/libs/jquery.2.1.4.min.js"></script>
+    <script src="../javascripts/libs/bootstrap.min.js"></script>
+    <script src="../javascripts/libs/vue.min.js"></script>
+    <script src="../javascripts/libs/echarts.simple.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-collapse">
+            <img class="nav-img" src="../images/logo_icon.png"/>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="test-main.html">黑盒测试</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container pb50">
+    <div>
+        <button class="btn btn-primary historyBack">返回上一页</button>
+    </div>
+    <div class="border systemType">
+        <div class="clearfix">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#detail" data-toggle="tab">概述</a></li>
+                <li><a href="#content" data-toggle="tab">测试用例及反馈详情</a></li>
+            </ul>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane active fade in pd10" id="detail">
+                <h3><span>接口：</span><b>/oms/sysparamconf/querySystemParamConf</b></h3>
+                <div class="pageHide">
+                    <p class="title active"><span>版本：</span><b>v1.0.1</b></p>
+                    <div class="content">
+                        <p><span>时间：</span><b>2016-10-11 12:25:65</b></p>
+                        <p><span>用例总数：</span><b id="case-1">5</b></p>
+                        <p><span>成功：</span><b id="success-1">3</b></p>
+                        <p><span>失败：</span><b id="failed-1">2</b></p>
+                        <p><span>发生错误：</span><b id="error-1">0</b></p>
+                        <p><span>成功率：</span><b id="successRate-1">60%</b></p>
+                        <div class="echart clearfix">
+                            <div class="col-xs-6">
+                                <div id="echart-testPie-1" style="width: 400px;height:400px"></div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div id="echart-testRole-1" style="width: 400px;height:400px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="pageHide">
+                    <p class="title"><span>版本：</span><b>v1.0.0</b></p>
+                    <div class="content" style="display: none;">
+                        <p><span>时间：</span><b>2016-10-11 12:25:65</b></p>
+                        <p><span>用例总数：</span><b id="case-0">11</b></p>
+                        <p><span>成功：</span><b id="success-0">6</b></p>
+                        <p><span>失败：</span><b id="failed-0">3</b></p>
+                        <p><span>发生错误：</span><b id="error-0">2</b></p>
+                        <p><span>成功率：</span><b id="successRate-0">60%</b></p>
+                        <div class="echart clearfix">
+                            <div class="col-xs-6">
+                                <div id="echart-testPie-0" style="width: 400px;height:400px"></div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div id="echart-testRole-0" style="width: 400px;height:400px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane pd10" id="content">
+                <div class="system">
+                    <p class="title"><b>版本：</b><b>v1.0.1</b></p>
+                    <ul class="system-detail">
+                        <li>
+                            <a class="linkDetail" href="javascript:">查询系统参数列表首页数据查询测试</a>
+                            <div class="system-detail-c pd10">
+                                <p>用例描述：ABC</p>
+                                <div>
+                                    <p>接口传输类型：JSON</p>
+                                    <div>接口传输参数：</div>
+                                    <div class="pr20 pl20">
+<pre>
+{
+  "currentPage": 1,
+  "perPageCount": 20,
+  "partnerCode": "UKSAS",
+  "streamNo": "web_bss147919119356335655"
+}
+</pre>
+                                    </div>
+                                </div>
+                                <div class="fl-fix">
+                                    <p>接口响应时间：<span>47ms</span></p>
+                                    <p>返回数据规范检测：<span>通过</span></p>
+                                    <p>返回数据类型分析：<span>列表</span></p>
+                                    <p>返回数据类型分析：<span>其他</span></p>
+                                    <p>测试用例逻辑测试结果：<span>通过</span></p>
+                                    <p>测试用例逻辑测试结果信息：<span>Success</span></p>
+                                </div>
+                                <div class="pr20 pl20 hide-fix">
+                                    <div class="clearfix">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#ct-v1-0" data-toggle="tab">表格展示</a></li>
+                                            <li><a href="#cd-v1-0" data-toggle="tab">JSON数据展示</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active fade in" id="ct-v1-0">
+                                            <table class="table table-striped table-responsive table-bordered table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th>id</th>
+                                                    <th>mvnoCode</th>
+                                                    <th>code</th>
+                                                    <th>name</th>
+                                                    <th>data</th>
+                                                    <th>status</th>
+                                                    <th>remark</th>
+                                                    <th>createTime</th>
+                                                    <th>updateTime</th>
+                                                    <th>isdelete</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>id</td><td>mvnoCode</td><td>code</td><td>name</td><td>data</td><td>status</td><td>remark</td><td>createTime</td><td>updateTime</td><td>isdelete</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>id</td><td>mvnoCode</td><td>code</td><td>name</td><td>data</td><td>status</td><td>remark</td><td>createTime</td><td>updateTime</td><td>isdelete</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>id</td><td>mvnoCode</td><td>code</td><td>name</td><td>data</td><td>status</td><td>remark</td><td>createTime</td><td>updateTime</td><td>isdelete</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>id</td><td>mvnoCode</td><td>code</td><td>name</td><td>data</td><td>status</td><td>remark</td><td>createTime</td><td>updateTime</td><td>isdelete</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>id</td><td>mvnoCode</td><td>code</td><td>name</td><td>data</td><td>status</td><td>remark</td><td>createTime</td><td>updateTime</td><td>isdelete</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="tab-pane fade" id="cd-v1-0">
+<pre>
+{
+  "streamNo": "web_bss147919119356335655",
+  "resultCode": "00000000",
+  "resultDesc": "Success",
+  "data": {
+    "currentPage": 1,
+    "perPageCount": 20,
+    "totalCount": 13,
+    "totalPageCount": 1,
+    "dataList": [
+      {
+        "id": 2,
+        "mvnoCode": "ALL",
+        "code": "QRCode_Default_Url",
+        "name": "二维码默认跳转URL",
+        "data": "http://www.ucloudlink.com",
+        "status": "1",
+        "remark": "二维码默认跳转URL",
+        "createTime": 1473091200000,
+        "updateTime": 1473177600000,
+        "isdelete": 0
+      },
+      {
+        "id": 3,
+        "mvnoCode": "ALL",
+        "code": "RTGHFH-eerr",
+        "name": "转基因",
+        "data": "3254353http://tencent.com",
+        "status": "1",
+        "remark": "fsdfgg",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 4,
+        "mvnoCode": "ALL",
+        "code": "RTGHFH-eerr",
+        "name": "11转基因22",
+        "data": "http:baidu.com",
+        "status": "1",
+        "remark": "1111",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 5,
+        "mvnoCode": "ALL",
+        "code": "tttRTGHFH-eerr",
+        "name": "11转基因22",
+        "data": "http://baidu.com",
+        "status": "1",
+        "remark": "444",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 6,
+        "mvnoCode": "ALL",
+        "code": "tttRTGHFH-eerr",
+        "name": "11erter22",
+        "data": "http://baidu.com",
+        "status": "1",
+        "remark": "44",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 7,
+        "mvnoCode": "ALL",
+        "code": "ssfs",
+        "name": "11erter22",
+        "data": "http://taobao.com",
+        "status": "1",
+        "remark": "3534534",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 8,
+        "mvnoCode": "ALL",
+        "code": "tgreyger",
+        "name": "于是",
+        "data": "http://tencent.com",
+        "status": "1",
+        "remark": "gterg",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 9,
+        "mvnoCode": "ALL",
+        "code": "tgreyger",
+        "name": "哇嘎嘎",
+        "data": "http://tencent.com",
+        "status": "1",
+        "remark": "sd",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 10,
+        "mvnoCode": "ALL",
+        "code": "545tgreyger",
+        "name": "44哇嘎嘎",
+        "data": "32334http://tencent.com",
+        "status": "1",
+        "remark": "sd",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 11,
+        "mvnoCode": "ALL",
+        "code": "545tgreyger",
+        "name": "44fdggh",
+        "data": "323dfghddfgent.com",
+        "status": "1",
+        "remark": "gfdghfdh",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 12,
+        "mvnoCode": "ALL",
+        "code": "89dfg86",
+        "name": "8gfh6",
+        "data": "fgdgewwwe.com",
+        "status": "1",
+        "remark": "gfdghfdh",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 13,
+        "mvnoCode": "ALL",
+        "code": "89dfg86",
+        "name": "8gfh6",
+        "data": "fgdgewwwe.com",
+        "status": "1",
+        "remark": "gfdghfdh",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 14,
+        "mvnoCode": "ALL",
+        "code": "fasdfasdf",
+        "name": "sds",
+        "data": "d.com",
+        "status": "1",
+        "remark": "d",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      }
+    ]
+  }
+}
+</pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="linkDetail" href="javascript:">查询系统参数列表首页数据查询测试</a>
+                            <div class="system-detail-c pd10">
+                                <p>用例描述：ABC</p>
+                                <div>
+                                    <p>接口传输类型：JSON</p>
+                                    <div>接口传输参数：</div>
+                                    <div class="pr20 pl20">
+<pre>
+{
+  "currentPage": 1,
+  "perPageCount": 20,
+  "partnerCode": "UKSAS",
+  "streamNo": "web_bss147919119356335655"
+}
+</pre>
+                                    </div>
+                                </div>
+                                <div class="fl-fix">
+                                    <p>接口响应时间：<span>47ms</span></p>
+                                    <p>返回数据规范检测：<span>通过</span></p>
+                                    <p>返回数据类型分析：<span>列表</span></p>
+                                    <p>返回数据类型分析：<span>其他</span></p>
+                                    <p>测试用例逻辑测试结果：<span>通过</span></p>
+                                    <p>测试用例逻辑测试结果信息：<span>Success</span></p>
+                                </div>
+                                <div class="pr20 pl20 hide-fix">
+                                    <div class="clearfix">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#ct-v1-1" data-toggle="tab">表格展示</a></li>
+                                            <li><a href="#cd-v1-1" data-toggle="tab">JSON数据展示</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active fade in" id="ct-v1-1">
+                                            <table class="table table-striped table-responsive table-bordered table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th>id</th>
+                                                    <th>mvnoCode</th>
+                                                    <th>code</th>
+                                                    <th>name</th>
+                                                    <th>data</th>
+                                                    <th>status</th>
+                                                    <th>remark</th>
+                                                    <th>createTime</th>
+                                                    <th>updateTime</th>
+                                                    <th>isdelete</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>id</td><td>mvnoCode</td><td>code</td><td>name</td><td>data</td><td>status</td><td>remark</td><td>createTime</td><td>updateTime</td><td>isdelete</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>id</td><td>mvnoCode</td><td>code</td><td>name</td><td>data</td><td>status</td><td>remark</td><td>createTime</td><td>updateTime</td><td>isdelete</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>id</td><td>mvnoCode</td><td>code</td><td>name</td><td>data</td><td>status</td><td>remark</td><td>createTime</td><td>updateTime</td><td>isdelete</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>id</td><td>mvnoCode</td><td>code</td><td>name</td><td>data</td><td>status</td><td>remark</td><td>createTime</td><td>updateTime</td><td>isdelete</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>id</td><td>mvnoCode</td><td>code</td><td>name</td><td>data</td><td>status</td><td>remark</td><td>createTime</td><td>updateTime</td><td>isdelete</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="tab-pane fade" id="cd-v1-1">
+<pre>
+{
+  "streamNo": "web_bss147919119356335655",
+  "resultCode": "00000000",
+  "resultDesc": "Success",
+  "data": {
+    "currentPage": 1,
+    "perPageCount": 20,
+    "totalCount": 13,
+    "totalPageCount": 1,
+    "dataList": [
+      {
+        "id": 2,
+        "mvnoCode": "ALL",
+        "code": "QRCode_Default_Url",
+        "name": "二维码默认跳转URL",
+        "data": "http://www.ucloudlink.com",
+        "status": "1",
+        "remark": "二维码默认跳转URL",
+        "createTime": 1473091200000,
+        "updateTime": 1473177600000,
+        "isdelete": 0
+      },
+      {
+        "id": 3,
+        "mvnoCode": "ALL",
+        "code": "RTGHFH-eerr",
+        "name": "转基因",
+        "data": "3254353http://tencent.com",
+        "status": "1",
+        "remark": "fsdfgg",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 4,
+        "mvnoCode": "ALL",
+        "code": "RTGHFH-eerr",
+        "name": "11转基因22",
+        "data": "http:baidu.com",
+        "status": "1",
+        "remark": "1111",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 5,
+        "mvnoCode": "ALL",
+        "code": "tttRTGHFH-eerr",
+        "name": "11转基因22",
+        "data": "http://baidu.com",
+        "status": "1",
+        "remark": "444",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 6,
+        "mvnoCode": "ALL",
+        "code": "tttRTGHFH-eerr",
+        "name": "11erter22",
+        "data": "http://baidu.com",
+        "status": "1",
+        "remark": "44",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 7,
+        "mvnoCode": "ALL",
+        "code": "ssfs",
+        "name": "11erter22",
+        "data": "http://taobao.com",
+        "status": "1",
+        "remark": "3534534",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 8,
+        "mvnoCode": "ALL",
+        "code": "tgreyger",
+        "name": "于是",
+        "data": "http://tencent.com",
+        "status": "1",
+        "remark": "gterg",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 9,
+        "mvnoCode": "ALL",
+        "code": "tgreyger",
+        "name": "哇嘎嘎",
+        "data": "http://tencent.com",
+        "status": "1",
+        "remark": "sd",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 10,
+        "mvnoCode": "ALL",
+        "code": "545tgreyger",
+        "name": "44哇嘎嘎",
+        "data": "32334http://tencent.com",
+        "status": "1",
+        "remark": "sd",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 11,
+        "mvnoCode": "ALL",
+        "code": "545tgreyger",
+        "name": "44fdggh",
+        "data": "323dfghddfgent.com",
+        "status": "1",
+        "remark": "gfdghfdh",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 12,
+        "mvnoCode": "ALL",
+        "code": "89dfg86",
+        "name": "8gfh6",
+        "data": "fgdgewwwe.com",
+        "status": "1",
+        "remark": "gfdghfdh",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 13,
+        "mvnoCode": "ALL",
+        "code": "89dfg86",
+        "name": "8gfh6",
+        "data": "fgdgewwwe.com",
+        "status": "1",
+        "remark": "gfdghfdh",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 14,
+        "mvnoCode": "ALL",
+        "code": "fasdfasdf",
+        "name": "sds",
+        "data": "d.com",
+        "status": "1",
+        "remark": "d",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      }
+    ]
+  }
+}
+</pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="system">
+                    <p class="title"><b>版本：</b><b>v1.0.0</b></p>
+                    <ul class="system-detail">
+                        <li>
+                            <a class="linkDetail" href="javascript:">查询系统参数列表首页数据查询测试</a>
+                            <div class="system-detail-c pd10">
+                                <p>用例描述：ABC</p>
+                                <div>
+                                    <p>接口传输类型：JSON</p>
+                                    <div>接口传输参数：</div>
+                                    <div class="pr20 pl20">
+<pre>
+{
+  "currentPage": 1,
+  "perPageCount": 20,
+  "partnerCode": "UKSAS",
+  "streamNo": "web_bss147919119356335655"
+}
+</pre>
+                                    </div>
+                                </div>
+                                <div class="fl-fix">
+                                    <p>接口响应时间：<span>47ms</span></p>
+                                    <p>返回数据规范检测：<span>通过</span></p>
+                                    <p>返回数据类型分析：<span>列表</span></p>
+                                    <p>返回数据类型分析：<span>其他</span></p>
+                                    <p>测试用例逻辑测试结果：<span>通过</span></p>
+                                    <p>测试用例逻辑测试结果信息：<span>Success</span></p>
+                                </div>
+                                <div class="pr20 pl20 hide-fix">
+                                    <div class="clearfix">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#ct-v0-0" data-toggle="tab">表格展示</a></li>
+                                            <li><a href="#cd-v0-0" data-toggle="tab">JSON数据展示</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active fade in" id="ct-v0-0">
+                                            <table class="table table-striped table-responsive table-bordered table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th>id</th>
+                                                    <th>mvnoCode</th>
+                                                    <th>code</th>
+                                                    <th>name</th>
+                                                    <th>data</th>
+                                                    <th>status</th>
+                                                    <th>remark</th>
+                                                    <th>createTime</th>
+                                                    <th>updateTime</th>
+                                                    <th>isdelete</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>id</td><td>mvnoCode</td><td>code</td><td>name</td><td>data</td><td>status</td><td>remark</td><td>createTime</td><td>updateTime</td><td>isdelete</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>id</td><td>mvnoCode</td><td>code</td><td>name</td><td>data</td><td>status</td><td>remark</td><td>createTime</td><td>updateTime</td><td>isdelete</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>id</td><td>mvnoCode</td><td>code</td><td>name</td><td>data</td><td>status</td><td>remark</td><td>createTime</td><td>updateTime</td><td>isdelete</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>id</td><td>mvnoCode</td><td>code</td><td>name</td><td>data</td><td>status</td><td>remark</td><td>createTime</td><td>updateTime</td><td>isdelete</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>id</td><td>mvnoCode</td><td>code</td><td>name</td><td>data</td><td>status</td><td>remark</td><td>createTime</td><td>updateTime</td><td>isdelete</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="tab-pane fade" id="cd-v0-0">
+<pre>
+{
+  "streamNo": "web_bss147919119356335655",
+  "resultCode": "00000000",
+  "resultDesc": "Success",
+  "data": {
+    "currentPage": 1,
+    "perPageCount": 20,
+    "totalCount": 13,
+    "totalPageCount": 1,
+    "dataList": [
+      {
+        "id": 2,
+        "mvnoCode": "ALL",
+        "code": "QRCode_Default_Url",
+        "name": "二维码默认跳转URL",
+        "data": "http://www.ucloudlink.com",
+        "status": "1",
+        "remark": "二维码默认跳转URL",
+        "createTime": 1473091200000,
+        "updateTime": 1473177600000,
+        "isdelete": 0
+      },
+      {
+        "id": 3,
+        "mvnoCode": "ALL",
+        "code": "RTGHFH-eerr",
+        "name": "转基因",
+        "data": "3254353http://tencent.com",
+        "status": "1",
+        "remark": "fsdfgg",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 4,
+        "mvnoCode": "ALL",
+        "code": "RTGHFH-eerr",
+        "name": "11转基因22",
+        "data": "http:baidu.com",
+        "status": "1",
+        "remark": "1111",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 5,
+        "mvnoCode": "ALL",
+        "code": "tttRTGHFH-eerr",
+        "name": "11转基因22",
+        "data": "http://baidu.com",
+        "status": "1",
+        "remark": "444",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 6,
+        "mvnoCode": "ALL",
+        "code": "tttRTGHFH-eerr",
+        "name": "11erter22",
+        "data": "http://baidu.com",
+        "status": "1",
+        "remark": "44",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 7,
+        "mvnoCode": "ALL",
+        "code": "ssfs",
+        "name": "11erter22",
+        "data": "http://taobao.com",
+        "status": "1",
+        "remark": "3534534",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 8,
+        "mvnoCode": "ALL",
+        "code": "tgreyger",
+        "name": "于是",
+        "data": "http://tencent.com",
+        "status": "1",
+        "remark": "gterg",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 9,
+        "mvnoCode": "ALL",
+        "code": "tgreyger",
+        "name": "哇嘎嘎",
+        "data": "http://tencent.com",
+        "status": "1",
+        "remark": "sd",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 10,
+        "mvnoCode": "ALL",
+        "code": "545tgreyger",
+        "name": "44哇嘎嘎",
+        "data": "32334http://tencent.com",
+        "status": "1",
+        "remark": "sd",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 11,
+        "mvnoCode": "ALL",
+        "code": "545tgreyger",
+        "name": "44fdggh",
+        "data": "323dfghddfgent.com",
+        "status": "1",
+        "remark": "gfdghfdh",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 12,
+        "mvnoCode": "ALL",
+        "code": "89dfg86",
+        "name": "8gfh6",
+        "data": "fgdgewwwe.com",
+        "status": "1",
+        "remark": "gfdghfdh",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 13,
+        "mvnoCode": "ALL",
+        "code": "89dfg86",
+        "name": "8gfh6",
+        "data": "fgdgewwwe.com",
+        "status": "1",
+        "remark": "gfdghfdh",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 14,
+        "mvnoCode": "ALL",
+        "code": "fasdfasdf",
+        "name": "sds",
+        "data": "d.com",
+        "status": "1",
+        "remark": "d",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      }
+    ]
+  }
+}
+</pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="linkDetail" href="javascript:">查询系统参数列表首页数据查询测试</a>
+                            <div class="system-detail-c pd10">
+                                <p>用例描述：ABC</p>
+                                <div>
+                                    <p>接口传输类型：JSON</p>
+                                    <div>接口传输参数：</div>
+                                    <div class="pr20 pl20">
+<pre>
+{
+  "currentPage": 1,
+  "perPageCount": 20,
+  "partnerCode": "UKSAS",
+  "streamNo": "web_bss147919119356335655"
+}
+</pre>
+                                    </div>
+                                </div>
+                                <div class="fl-fix">
+                                    <p>接口响应时间：<span>47ms</span></p>
+                                    <p>返回数据规范检测：<span>通过</span></p>
+                                    <p>返回数据类型分析：<span>列表</span></p>
+                                    <p>返回数据类型分析：<span>其他</span></p>
+                                    <p>测试用例逻辑测试结果：<span>通过</span></p>
+                                    <p>测试用例逻辑测试结果信息：<span>Success</span></p>
+                                </div>
+                                <div class="pr20 pl20 hide-fix">
+                                    <div class="clearfix">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#ct-v0-1" data-toggle="tab">表格展示</a></li>
+                                            <li><a href="#cd-v0-1" data-toggle="tab">JSON数据展示</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="tab-content">
+                                        <div class="tab-pane active fade in" id="ct-v0-1">
+                                            <table class="table table-striped table-responsive table-bordered table-hover">
+                                                <thead>
+                                                <tr>
+                                                    <th>id</th>
+                                                    <th>mvnoCode</th>
+                                                    <th>code</th>
+                                                    <th>name</th>
+                                                    <th>data</th>
+                                                    <th>status</th>
+                                                    <th>remark</th>
+                                                    <th>createTime</th>
+                                                    <th>updateTime</th>
+                                                    <th>isdelete</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr>
+                                                    <td>id</td><td>mvnoCode</td><td>code</td><td>name</td><td>data</td><td>status</td><td>remark</td><td>createTime</td><td>updateTime</td><td>isdelete</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>id</td><td>mvnoCode</td><td>code</td><td>name</td><td>data</td><td>status</td><td>remark</td><td>createTime</td><td>updateTime</td><td>isdelete</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>id</td><td>mvnoCode</td><td>code</td><td>name</td><td>data</td><td>status</td><td>remark</td><td>createTime</td><td>updateTime</td><td>isdelete</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>id</td><td>mvnoCode</td><td>code</td><td>name</td><td>data</td><td>status</td><td>remark</td><td>createTime</td><td>updateTime</td><td>isdelete</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>id</td><td>mvnoCode</td><td>code</td><td>name</td><td>data</td><td>status</td><td>remark</td><td>createTime</td><td>updateTime</td><td>isdelete</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="tab-pane fade" id="cd-v0-1">
+<pre>
+{
+  "streamNo": "web_bss147919119356335655",
+  "resultCode": "00000000",
+  "resultDesc": "Success",
+  "data": {
+    "currentPage": 1,
+    "perPageCount": 20,
+    "totalCount": 13,
+    "totalPageCount": 1,
+    "dataList": [
+      {
+        "id": 2,
+        "mvnoCode": "ALL",
+        "code": "QRCode_Default_Url",
+        "name": "二维码默认跳转URL",
+        "data": "http://www.ucloudlink.com",
+        "status": "1",
+        "remark": "二维码默认跳转URL",
+        "createTime": 1473091200000,
+        "updateTime": 1473177600000,
+        "isdelete": 0
+      },
+      {
+        "id": 3,
+        "mvnoCode": "ALL",
+        "code": "RTGHFH-eerr",
+        "name": "转基因",
+        "data": "3254353http://tencent.com",
+        "status": "1",
+        "remark": "fsdfgg",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 4,
+        "mvnoCode": "ALL",
+        "code": "RTGHFH-eerr",
+        "name": "11转基因22",
+        "data": "http:baidu.com",
+        "status": "1",
+        "remark": "1111",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 5,
+        "mvnoCode": "ALL",
+        "code": "tttRTGHFH-eerr",
+        "name": "11转基因22",
+        "data": "http://baidu.com",
+        "status": "1",
+        "remark": "444",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 6,
+        "mvnoCode": "ALL",
+        "code": "tttRTGHFH-eerr",
+        "name": "11erter22",
+        "data": "http://baidu.com",
+        "status": "1",
+        "remark": "44",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 7,
+        "mvnoCode": "ALL",
+        "code": "ssfs",
+        "name": "11erter22",
+        "data": "http://taobao.com",
+        "status": "1",
+        "remark": "3534534",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 8,
+        "mvnoCode": "ALL",
+        "code": "tgreyger",
+        "name": "于是",
+        "data": "http://tencent.com",
+        "status": "1",
+        "remark": "gterg",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 9,
+        "mvnoCode": "ALL",
+        "code": "tgreyger",
+        "name": "哇嘎嘎",
+        "data": "http://tencent.com",
+        "status": "1",
+        "remark": "sd",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 10,
+        "mvnoCode": "ALL",
+        "code": "545tgreyger",
+        "name": "44哇嘎嘎",
+        "data": "32334http://tencent.com",
+        "status": "1",
+        "remark": "sd",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 11,
+        "mvnoCode": "ALL",
+        "code": "545tgreyger",
+        "name": "44fdggh",
+        "data": "323dfghddfgent.com",
+        "status": "1",
+        "remark": "gfdghfdh",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 12,
+        "mvnoCode": "ALL",
+        "code": "89dfg86",
+        "name": "8gfh6",
+        "data": "fgdgewwwe.com",
+        "status": "1",
+        "remark": "gfdghfdh",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 13,
+        "mvnoCode": "ALL",
+        "code": "89dfg86",
+        "name": "8gfh6",
+        "data": "fgdgewwwe.com",
+        "status": "1",
+        "remark": "gfdghfdh",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      },
+      {
+        "id": 14,
+        "mvnoCode": "ALL",
+        "code": "fasdfasdf",
+        "name": "sds",
+        "data": "d.com",
+        "status": "1",
+        "remark": "d",
+        "createTime": 1473609600000,
+        "updateTime": 1473609600000,
+        "isdelete": 0
+      }
+    ]
+  }
+}
+</pre>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="js/common.js"></script>
+</body>
+</html>

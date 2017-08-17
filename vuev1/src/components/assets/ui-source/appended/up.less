@@ -1,0 +1,133 @@
+/**
+ * Created by chenwenxiao on 2016/9/24.
+ * 逃生舱
+ */
+.up{
+    position: fixed;
+    bottom: 12%;
+    width: 4em;
+    margin-right:-5%;
+    right: 0;
+    cursor: pointer;
+    text-align: center;
+    padding: 1em 0;
+    background: @font-color-fff;
+    border: 1px solid @color-border-f6;
+    color: @brand-primary;
+    box-shadow: 0 0 8px @color-border-line;
+    transition:background @time-normal;
+}
+.up span{
+    font-size: @font-size-large;
+    transition:color @time-normal;
+}
+.up:hover{
+    background: @color-border-f6;
+}
+.up:hover span{
+    color:@font-color-fff
+}
+.up.active{
+    margin-right: 3%;
+    animation: up-animate-in @time-long;
+    -moz-animation: up-animate-in @time-long;
+    -webkit-animation: up-animate-in @time-long;
+    -o-animation: up-animate-in @time-long;
+}
+.up.unactive{
+    margin-right: -5%;
+    animation: up-animate-out @time-long;
+    -moz-animation: up-animate-out @time-long;
+    -webkit-animation: up-animate-out @time-long;
+    -o-animation: up-animate-out @time-long;
+}
+/*顶部逃生舱动画*/
+@keyframes up-animate-in
+{
+    from {
+        margin-right:-3%;
+        transform: scale(0.6) rotate(360deg) translate(0px);
+    }
+    to {
+        margin-right: 3%;
+        transform: scale(1) rotate(-720deg) translate(0px);
+    }
+}
+@-o-keyframes up-animate-in
+{
+    from {
+        margin-right:-3%;
+        transform: scale(0.6) rotate(360deg) translate(0px);
+    }
+    to {
+        margin-right: 3%;
+        transform: scale(1) rotate(-720deg) translate(0px);
+    }
+}
+@-webkit-keyframes up-animate-in
+{
+    from {
+        margin-right:-3%;
+        transform: scale(0.6) rotate(360deg) translate(0px);
+    }
+    to {
+        margin-right: 3%;
+        transform: scale(1) rotate(-720deg) translate(0px);
+    }
+}
+@-moz-keyframes up-animate-in
+{
+    from {
+        margin-right:-3%;
+        transform: scale(0.6) rotate(360deg) translate(0px);
+    }
+    to {
+        margin-right: 3%;
+        transform: scale(1) rotate(-720deg) translate(0px);
+    }
+}
+
+@keyframes up-animate-out
+{
+    0% {
+        margin-right: 3%;
+        transform: scale(1) rotate(-720deg) translate(0px);
+    }
+    100% {
+        margin-right:-3%;
+        transform: scale(0.6) rotate(360deg) translate(0px);
+    }
+}
+@-o-keyframes up-animate-out
+{
+    0% {
+        margin-right: 3%;
+        transform: scale(1) rotate(-720deg) translate(0px);
+    }
+    100% {
+        margin-right:-3%;
+        transform: scale(0.6) rotate(360deg) translate(0px);
+    }
+}
+@-webkit-keyframes up-animate-out
+{
+    0% {
+        margin-right: 3%;
+        transform: scale(1) rotate(-720deg) translate(0px);
+    }
+    100% {
+        margin-right:-3%;
+        transform: scale(0.6) rotate(360deg) translate(0px);
+    }
+}
+@-moz-keyframes up-animate-out
+{
+    0% {
+        margin-right: 3%;
+        transform: scale(1) rotate(-720deg) translate(0px);
+    }
+    100% {
+        margin-right:-3%;
+        transform: scale(0.6) rotate(360deg) translate(0px);
+    }
+}

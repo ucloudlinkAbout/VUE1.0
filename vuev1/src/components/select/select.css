@@ -1,0 +1,181 @@
+.rct-select {
+  position: relative;
+  min-width: 200px;
+  min-height: 30px;
+  cursor: pointer;
+  padding-right: 20px;
+}
+.rct-select.single:before {
+  width: 0;
+  height: 0;
+  border-top: 6px solid #666;
+  border-right: 6px solid transparent;
+  border-left: 6px solid transparent;
+  content: "";
+  position: absolute;
+  right: .7em;
+  top: .8em;
+  z-index: 0;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+.rct-select.active.single:before {
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  -o-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.rct-select .rct-select-result {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  margin-right: 16px;
+}
+.rct-select .rct-select-result:after {
+  position: absolute;
+  right: -12px;
+  content: '×';
+  font-weight: bold;
+  color: #ddd;
+}
+.rct-select .rct-select-result:hover,
+.rct-select .rct-select-result:hover:after {
+  color: #CA3C3C;
+}
+.rct-select.readonly .result:after {
+  content: '';
+}
+.rct-select .rct-select-options-wrap {
+  top: 100%;
+  z-index: 1050;
+  position: absolute;
+  overflow: hidden;
+  left: -13px;
+  right: -13px;
+}
+.rct-select .rct-select-options {
+  display: none;
+  border: solid 1px #ccc;
+  border-radius: 0 0 4px 4px;
+  border-top-width: 0;
+  background-color: #fff;
+  margin: 0 12px 20px;
+  -webkit-box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.175);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.175);
+  -webkit-transition: 0.45s;
+  -o-transition: 0.45s;
+  transition: 0.45s;
+  -webkit-transform: translate(0, -100%);
+  -ms-transform: translate(0, -100%);
+  -o-transform: translate(0, -100%);
+  transform: translate(0, -100%);
+}
+.rct-select .rct-select-options .filter {
+  position: relative;
+  padding: .4em .6em;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.rct-select .rct-select-options .filter .search {
+  position: absolute;
+  top: .8em;
+  right: 1em;
+  width: 15px;
+  height: 14px;
+  /*background: url('images/icon-search.png');*/
+}
+.rct-select .rct-select-options .filter input {
+  width: 100%;
+  padding: .3em;
+  border: none;
+  background-color: #f2f2f2;
+  border-radius: 4px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.rct-select.active ._select-remove{
+  display: inline-block;
+}
+.rct-select ._select-remove{
+  display: none;
+}
+.rct-select.active hr {
+  display: block;
+}
+.rct-select.active .rct-select-options {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.rct-select.dropup hr {
+  display: none;
+}
+.rct-select.dropup .rct-select-options-wrap {
+  top: auto;
+  bottom: 100%;
+}
+.rct-select.dropup .rct-select-options {
+  margin: 0 12px;
+  border-top-width: 1px;
+  -webkit-box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.175);
+  box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.175);
+  -webkit-transform: translate(0, 100%);
+  -ms-transform: translate(0, 100%);
+  -o-transform: translate(0, 100%);
+  transform: translate(0, 100%);
+}
+.rct-select.dropup.active .rct-select-options {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  -o-transform: translate(0, 0);
+  transform: translate(0, 0);
+}
+.rct-select hr {
+  position: relative;
+  display: none;
+  z-index: 1060;
+  margin: 0px 12px 0;
+  border-width: 0;
+  border-top: solid 1px #ccc;
+  border-bottom: solid 1px #e3e3e3;
+}
+.rct-select ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  max-height: 300px;
+  overflow: auto;
+}
+.rct-select ul li {
+  padding: 0.4em 0.6em;
+  cursor: pointer;
+  display: none;
+}
+.rct-select ul li.show {
+  display: block;
+}
+.rct-select ul li.active {
+  color: #000;
+  background-color: #ddd;
+}
+.rct-select ul li:hover {
+  color: #fff;
+  background-color: #dd2727;
+}
+.rct-select ul li.nbg {
+  color: #000;
+  background-color: #fff;
+}
+.rct-select ul li.selectbox{
+  display: inline-block!important;
+}
+.rct-select ul .group {
+  display: block;
+  font-weight: bold;
+  background-color: #fff;
+  padding: 0.4em 0.6em;
+}

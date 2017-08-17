@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后端规范</title>
+    <link rel="stylesheet" href="../stylesheets/bootstrap.min.css">
+    <script src="../javascripts/libs/jquery.2.1.4.min.js"></script>
+    <script src="../javascripts/libs/bootstrap.min.js"></script>
+    <script src="../javascripts/libs/vue.min.js"></script>
+</head>
+<body>
+<nav class="navbar navbar-default navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-collapse">
+            <img class="nav-img fl" src="../images/logo_icon.png"/>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <h2>1.前端传入数据规范：</h2>
+    <pre>
+{
+  //所有接口的通用参数
+  "streamNo": "string",     //web_ + 时间戳 + 5位随机数
+  "partnerCode": "string",      //合作伙伴编码
+  "loginCustomerId": "string",      //登录用户唯一的ID验证
+
+  //后台处理业务的相关参数
+  "mvnoCode": "string",
+  "groupCode": "string",
+  "groupName": "string",
+  "userCodeSuffix": "string",
+  "_default": "string",
+  "createUserAccount": "string",
+  "createUserName": "string",
+  "groupPacTypeList": [
+    {
+      "mvnoCode": "string",
+      "packageType": "string",
+      "createUserAccount": "string",
+      "createUserName": "string"
+    }
+  ]
+}
+    </pre>
+    <h2>2.前端接收的数据规范：</h2>
+    <pre>
+{
+  //通用返回
+  "streamNo": "string",//前端传入的streamNo照常返回
+  "resultCode": "string",//返回状态码，接口调用成功，逻辑通过，返回00000000，否则其他状态码
+  "resultDesc": "string",//对于出错状态的描述，若有多语言的情况，需要对多语言进行处理
+
+  //业务相关数据返回
+  "data": "string"
+}
+    </pre>
+
+    <h3>2.1需要分页的数据返回：</h3>
+    <pre>
+{
+        "streamNo":"web_bss1481683868698662504",
+        "resultCode":"00000000",
+        "resultDesc":"Success",
+        "data":{
+            //分页详细参数
+            "currentPage":1,//当前页
+            "perPageCount":10,//每页显示记录数
+            "totalCount":3,//总记录数
+            "totalPageCount":1,//总页数
+            //业务相关分页数据
+            "dataList":
+                [
+                    {"id":35,"key":"B","type":"MvnoCode","langType":"zh-CN","value":"GTBU300兆","status":0,"description":"GTBU300兆","createTime":1480603490000},
+                    {"id":37,"key":"C","type":"MvnoCode","langType":"zh-CN","value":"携程专用","status":0,"description":"携程专用","createTime":1480603494000},
+                    {"id":40,"key":"D","type":"MvnoCode","langType":"zh-CN","value":"GTBU解绑","status":0,"description":"GTBU解绑","createTime":1480603499000}
+                ]
+        }
+}
+    </pre>
+    <h3>2.2无分页常规数据返回：</h3>
+    <pre>
+{
+        "streamNo":"web_bss14810851218884436",
+        "resultCode":"00000000",
+        "resultDesc":"Success",
+        "data":null
+}
+    </pre>
+</div>
+
+</body>
+</html>

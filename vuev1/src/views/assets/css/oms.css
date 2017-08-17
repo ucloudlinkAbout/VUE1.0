@@ -1,0 +1,41 @@
+/*oms相关*/
+/*登录*/
+.login{
+    height: 848px;
+}
+.logo{
+    width: 200px;
+}
+.login-bg{
+    background: url('../images/oms/bg.jpg') no-repeat;
+    width: 100%;
+    height: 720px;
+}
+.login-box{
+    border-radius: 4px;
+    position: absolute;
+    margin-top: 6%;
+    width: 25%;
+    min-width: 400px;
+    background: #fff;
+    margin-left: 10%;
+}
+.login-box .iconfont{
+    position: absolute;
+    margin-top: 7px;
+    margin-left: 14px;
+    font-size: 20px;
+}
+.login-box input.input-text{
+    padding: 10px 30px;
+    border-radius: 2px;
+    box-sizing: border-box;
+}
+.login-box label.input-checkbox-1 b{
+    color:#999;
+    font-weight: 100;
+}
+.login-box .btn-secondary{
+    padding: 10px;
+    border-radius: 3px;
+}
